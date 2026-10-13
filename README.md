@@ -1,14 +1,22 @@
-# BizCal Native Android MVP
+# BizCal Native Android Project
 
-Native Kotlin Android app (not a WebView wrapper), bilingual Bangla/English UI, offline SQLite storage, basic product/customer/sales records, and PDF invoice generation.
+This project includes a GitHub Actions workflow that builds a debug APK automatically.
 
-## Build without a computer
-1. Sign in to GitHub in your phone browser and create a new **private** repository named `BizCal`.
-2. Upload all files and folders in this project to the repository, keeping paths and the `.github/workflows/build-apk.yml` workflow intact. Easiest route: use GitHub's web UI to upload the ZIP contents after extracting it, or the GitHub mobile website's file upload.
-3. Open the repository's **Actions** tab, select **Build BizCal APK**, and tap **Run workflow** (or push to `main`).
-4. When it completes, open the run and download the `BizCal-debug-apk` artifact. Extract the downloaded ZIP and install `app-debug.apk`; Android may ask permission to install unknown apps.
+## Set it up using an Android phone
 
-## Important MVP limits
-- This is a starter build, not yet a production-ready accounting package.
-- PDF files are saved in the app's private external-files folder. Share/export UI, database backup/restore, edit/delete records, stock deduction, advanced invoice settings and proper testing are still to be added.
-- Keep the repository private if you do not want the source public. Do not upload private customer data into the repository.
+1. Download this ZIP and extract it. Do not upload the ZIP as one file.
+2. Create a GitHub repository (for example, `BizCal`).
+3. Upload the **contents** of the extracted folder to the repository root, preserving hidden folders and paths. In particular, `.github/workflows/build-apk.yml` must exist in the repository.
+4. Make sure the files are committed to the `main` branch. A push to `main` starts the build automatically.
+5. Open the repository's **Actions** tab and select **Build BizCal APK**. If needed, open the workflow and tap **Run workflow**.
+6. When the run has a green check mark, open that run, scroll to **Artifacts**, and download **BizCal-APK**. The downloaded artifact is a ZIP containing `app-debug.apk`. Extract it and install the APK. Android may ask you to allow installs from that browser/file manager.
+
+## If the build fails
+
+Open the failed run in Actions, select the build step, and inspect the first Kotlin or Gradle error. A successful workflow uploads the APK as an artifact.
+
+## Notes
+
+- This is a debug APK, suitable for testing, not a signed Play Store release.
+- BizCal stores its records locally on the device. Back up important information.
+- Keep the repository private if you do not want the source code public.
